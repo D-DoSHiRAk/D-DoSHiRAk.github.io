@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
         return params.get(name);
     }
 
-    const text = getQueryParam('user');
+    const text = getQueryParam('usert');
     if (text) {
         document.getElementById('user').textContent = text;
     }
