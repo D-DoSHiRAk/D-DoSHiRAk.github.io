@@ -4,8 +4,8 @@ document.addEventListener("DOMContentLoaded", function() {
         return params.get(name);
     }
 
-    const text = getQueryParam('text');
+    const text = getQueryParam('user');
     if (text) {
-        document.getElementById('message').textContent = text;
+        document.getElementById('user').textContent = text;
     }
 });
