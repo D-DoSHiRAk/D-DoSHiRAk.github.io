@@ -3,21 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Динамическая надпись</title>
+    <title>VARVpn</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1 id="message">Привет, мир!</h1>
-
-<script>
-    function getQueryParam(name) {
-        const params = new URLSearchParams(window.location.search);
-        return params.get(name);
-    }
-
-    const text = getQueryParam('text');
-    if (text) {
-        document.getElementById('message').textContent = text;
-    }
-</script>
+<h1>Добро пожаловать!</h1>
+<a href="#" class="button" id="message">Нажми меня</a>
+<script src="vars.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
