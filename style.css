@@ -2,11 +2,11 @@ body {
     font-family: Arial, sans-serif;
     text-align: center;
     margin: 50px;
-    background-color: #f4f4f4;
+    background-color: #afafaf;
 }
 
 h1 {
-    color: #333;
+    color: #252525;
 }
 
 button {
@@ -27,12 +27,12 @@ button:hover {
 
 @media (orientation: portrait) {
     body {
-        background-color: #b9b9b9;
+        background-color: #afafaf;
     }
 }
 
 @media (orientation: landscape) {
     body {
-        background-color: #bababa;
+        background-color: #afafaf;
     }
 }

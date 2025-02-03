@@ -1,12 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
-    function getQueryParam(name) {
-        const params = new URLSearchParams(window.location.search);
-        return params.get(name);
-    }
+    const params = new URLSearchParams(window.location.search);
 
-    const text = getQueryParam('usert');
-    if (text) {
-        const origText = document.getElementById('title').textContent;
-        document.getElementById('title').textContent = origText + " " + text;
-    }
+    params.forEach((value, key) => {
+        document.getElementById(key).textContent = value;
+    });
 });
