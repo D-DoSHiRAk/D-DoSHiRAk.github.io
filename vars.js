@@ -6,6 +6,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const text = getQueryParam('usert');
     if (text) {
-        document.getElementById('user').innerHTML = text;
+        document.getElementById('user').textContent = text;
     }
 });
