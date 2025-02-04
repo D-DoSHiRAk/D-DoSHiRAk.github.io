@@ -14,21 +14,21 @@ document.addEventListener("DOMContentLoaded", function() {
     function createProductCards(value){
         const parts = value.split(",");
 
-        let scale = 0.1;
+        let scale = window.innerWidth/1344/2;
 
         parts.forEach((value1, index) => {
             let x = 15;
-            let y = 30*index + 160;
-            createElement("text", "text", value1+index, x, y-7, "________________________________", 40 * scale);
-            createElement("text", "text", value1+index, x, y, value1, 96 * scale);
-            createElement("text", "text", value1+index, x + 2 / scale, y + 14, value1, 26 * scale);
+            let y = 30*index + 100;
+            createElement("text", "text", value1+index, x-10, y-7, "________________________________", 20 * scale);
+            createElement("text", "text", value1+index, x, y, value1, 48 * scale);
+            createElement("text", "text", value1+index, x + 155 * scale, y + 14, value1, 20 * scale);
             createElement("button", "button", value1+index, x, y + 14, "Купить", 32 * scale);
         });
     }
 
     //window.location.search
     //products=VPN,Server,Test
-    const params = new URLSearchParams(window.location.search);
+    const params = new URLSearchParams("products=VPN,Server,Test");
 
     const trueVars = ["products"];
 

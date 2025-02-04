@@ -87,6 +87,11 @@ div.background-col {
     z-index: 4;
 }
 
+.button:active {
+    background-color: #2c752d;
+    color: #dadada;
+}
+
 @font-face {
     font-family: "MySans";
     src: url("assets/CustomSans.ttf") format("truetype");
