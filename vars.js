@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     const container = document.createElement("button");
                     let x = 150*i;
                     let y = 100*i;
-                    container.innerHTML = '<button class="button" id="button" style="position: absolute; top: ' + y + 'px; left: ' + x + 'px;">' + value1 + '</button>';
+                    container.innerHTML = '<button class="button" id="' + value1 + '" style="position: absolute; top: ' + y + 'px; left: ' + x + 'px;">' + value1 + '</button>';
                     document.body.appendChild(container);
                 });
             }else{
