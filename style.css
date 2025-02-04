@@ -2,7 +2,7 @@ body {
     font-family: "Comic Sans MS";
     text-align: center;
     margin: 50px;
-    width: 1344px;
+    width: auto;
     height: 2000px;
     padding: 20px;
     background: linear-gradient(to bottom, #83878b, #83878b);
