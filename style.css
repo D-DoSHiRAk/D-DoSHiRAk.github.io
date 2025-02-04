@@ -1,5 +1,5 @@
 body {
-    font-family: "Comic Sans MS";
+    font-family: "MySans";
     text-align: center;
     margin: 50px;
     width: auto;
@@ -10,7 +10,7 @@ body {
 }
 
 h1 {
-    font-family: "Comic Sans MS", Georgia, Serif;
+    font-family: "MySans", Georgia, Serif;
     position: absolute;
     color: #efefef;
     font-size: 76px;
@@ -21,7 +21,7 @@ h1 {
 }
 
 a {
-    font-family: "Comic Sans MS", Georgia, cursive;
+    font-family: "MySans", Georgia, cursive;
     font-style: italic;
     position: absolute;
     color: #efefef;
@@ -55,6 +55,13 @@ div.background-col {
     bottom: 0px;
     left: 0px;
     right: 0px;
+}
+
+@font-face {
+    font-family: "MySans";
+    src: url("assets/CustomSans.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
 }
 
 @media (orientation: portrait) {
