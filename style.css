@@ -18,6 +18,7 @@ h1 {
     bottom: 0px;
     left: 0px;
     right: 0px;
+    z-index: 3;
 }
 
 a {
@@ -30,6 +31,7 @@ a {
     bottom: 0px;
     left: 0px;
     right: 0px;
+    z-index: 3;
 }
 
 div.background {
@@ -43,6 +45,7 @@ div.background {
     bottom: 0px;
     left: 0px;
     right: 50%;
+    z-index: 1;
 }
 
 div.background-col {
@@ -55,6 +58,28 @@ div.background-col {
     bottom: 0px;
     left: 0px;
     right: 0px;
+    z-index: 2;
+}
+
+div.product {
+
+}
+
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 32px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+    position: absolute;
+    z-index: 4;
 }
 
 @font-face {
