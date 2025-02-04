@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let checker = false;
 
         trueVars.forEach((value1, key1) =>{
-            if(key1 == key){
+            if(value1 == key){
                 checker = true;
                 return;
             }
@@ -16,16 +16,23 @@ document.addEventListener("DOMContentLoaded", function() {
         if(checker){
             if(key=="products"){
                 const parts = value.split(",");
-                let i = 0;
-                parts.forEach((value1, key1) => {
+                parts.forEach((value1, index) => {
+                    let x = 150*index;
+                    let y = 100*index;
                     const container = document.createElement("button");
-                    let x = 150*i;
-                    let y = 100*i;
-                    container.innerHTML = '<button class="button" id="' + value1 + '" style="position: absolute; top: ' + y + 'px; left: ' + x + 'px;">' + value1 + '</button>';
+                    container.className = "button";
+                    container.id = value1;
+                    container.style.position = "absolute";
+                    container.style.top = y + "px";
+                    container.style.left = x + "px";
+                    container.textContent = value1;
                     document.body.appendChild(container);
                 });
             }else{
-                document.getElementById(key).textContent = value;
+                const element = document.getElementById(key);
+                if (element) {
+                    element.textContent = value;
+                }
             }
             //id
         }
