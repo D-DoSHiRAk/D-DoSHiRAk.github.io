@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
             if(key=="products"){
                 const parts = value.split(",");
                 parts.forEach((value1, index) => {
-                    let x = 150*index;
+                    let x = 150;
                     let y = 100*index;
                     const container = document.createElement("button");
                     container.className = "button";
