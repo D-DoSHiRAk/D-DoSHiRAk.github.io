@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     //window.location.search
     //products=VPN,Server,Test
-    const params = new URLSearchParams("products=VPN,Server,Test");
+    const params = new URLSearchParams(window.location.search);
 
     const trueVars = ["products"];
 
