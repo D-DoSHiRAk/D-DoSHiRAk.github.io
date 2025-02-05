@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
         parts.forEach((value1, index) => {
             let x = -150;
             let y = 200*index + 800;
-            createElement("text", "text", value1+index, x-20, y-14, "________________________________", 20);
+            createElement("text", "text", value1+index, x-20, y-14, "____________________________", 20);
             createElement("text", "text", value1+index, x, y, value1, 48);
             createElement("text", "text", value1+index, x + 150, y + 64, value1, 20);
             createElement("button", "button", value1+index, x, y + 65, "Купить", 32);
