@@ -7,6 +7,7 @@ body {
     padding: 20px;
     background: linear-gradient(to bottom, #83878b, #83878b);
     overflow: visible;
+    position: static;
 }
 
 h1 {
@@ -61,7 +62,7 @@ div.background-col {
     z-index: 2;
 }
 
-.button {
+button {
     font-family: "MySans", Georgia, Serif;
     background-color: #4CAF50;
     border: none;
@@ -79,7 +80,7 @@ div.background-col {
     z-index: 4;
 }
 
-.text {
+text {
     font-family: "MySans", Georgia, Serif;
     position: absolute;
     color: #efefef;

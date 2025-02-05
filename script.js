@@ -4,9 +4,8 @@ document.addEventListener("DOMContentLoaded", function() {
         container.className = className;
         container.id = id;
         container.style.position = "absolute";
-        container.style.top = y + "%";
-        container.style.left = x + "%";
-        container.style.fontSize = size + "vw";
+        container.style.transform = "translate(" + x + "px, " + y + "px)";
+        container.style.fontSize = size + "px";
         container.textContent = text;
         document.body.appendChild(container);
     }
@@ -14,21 +13,19 @@ document.addEventListener("DOMContentLoaded", function() {
     function createProductCards(value){
         const parts = value.split(",");
 
-        let scale = window.innerWidth/1344/2;
-
         parts.forEach((value1, index) => {
-            let x = 15;
-            let y = 30*index + 100;
-            createElement("text", "text", value1+index, x-10, y-7, "________________________________", 20 * scale);
-            createElement("text", "text", value1+index, x, y, value1, 48 * scale);
-            createElement("text", "text", value1+index, x + 155 * scale, y + 14, value1, 20 * scale);
-            createElement("button", "button", value1+index, x, y + 14, "Купить", 32 * scale);
+            let x = -150;
+            let y = 200*index + 800;
+            createElement("text", "text", value1+index, x-20, y-14, "________________________________", 20);
+            createElement("text", "text", value1+index, x, y, value1, 48);
+            createElement("text", "text", value1+index, x + 150, y + 64, value1, 20);
+            createElement("button", "button", value1+index, x, y + 65, "Купить", 32);
         });
     }
 
     //window.location.search
     //products=VPN,Server,Test
-    const params = new URLSearchParams(window.location.search);
+    const params = new URLSearchParams("products=VPN,Server,Test");
 
     const trueVars = ["products"];
 
