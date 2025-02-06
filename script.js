@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
         rectangle.style.backgroundColor = col;
         rectangle.style.transform = "translate(" + x + ", " + y + ")";
         rectangle.style.borderRadius = "8px";
+        rectangle.style.cursor = "default";
         document.body.appendChild(rectangle);
     }
 
@@ -36,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    createRect("background-rect", "-50%", "62%", "100%", "1080px", '#1b232a');
+    createRect("background-rect", "-52%", "62%", "110%", "1080px", '#1b232a');
 
     //window.location.search
     //products=VPN,Server,Test
