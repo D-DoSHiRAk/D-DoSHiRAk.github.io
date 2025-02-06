@@ -27,9 +27,9 @@ document.addEventListener("DOMContentLoaded", function() {
         const parts = value.split(",");
 
         parts.forEach((value1, index) => {
-            let x = -170;
+            let x = -130;
             let y = 200*index + 700;
-            createRect(value1+index, x - 35 + "px", y + "px", "500px", "180px", 'lightgray')
+            createRect(value1+index, x - 5 + "px", y + "px", "300px", "180px", 'lightgray')
             createElement("text", "text", value1+index, x, y + 15, value1, 48);
             createElement("text", "text", value1+index, x + 180, y + 15, value1, 20);
             createElement("button", "button", value1+index, x, y + 85, "Купить", 32);
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     //window.location.search
     //products=VPN,Server,Test
-    const params = new URLSearchParams(window.location.search);
+    const params = new URLSearchParams("products=VPN,Server,Test");
 
     const trueVars = ["products"];
 
