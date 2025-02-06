@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const parts = value.split(",");
 
         parts.forEach((value1, index) => {
-            let x = -130;
+            let x = -140;
             let y = 200*index + 700;
             createRect(value1+index, x - 5 + "px", y + "px", "300px", "180px", 'lightgray')
             createElement("text", "text", value1+index, x, y + 15, value1, 48);
