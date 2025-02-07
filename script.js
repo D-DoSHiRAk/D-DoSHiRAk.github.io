@@ -37,11 +37,11 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    createRect("background-rect", "-52%", "62%", "110%", "1080px", '#1b232a');
+    createRect("background-rect", "-52%", "62%", "103.9%", "1080px", '#1b232a');
 
     //window.location.search
     //products=VPN,Server,Test
-    const params = new URLSearchParams("products=VPN,Server,Test");
+    const params = new URLSearchParams(window.location.search);
 
     const trueVars = ["products"];
 
