@@ -12,7 +12,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
     async function fetchGoogleSheetJSON(url) {
         try {
-            const response = await fetch(url);
+            const response = await fetch(url, {
+                redirect: "follow",
+                method: "GET",
+                headers: {
+                    "Content-Type": "text/plain;charset=utf-8",
+                },
+            });
             if (!response.ok) throw new Error(`Ошибка: ${response.status}`);
             const data = await response.json();
             console.log("Данные из Google Sheets:", data);
@@ -23,8 +29,14 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    const url = "https://script.google.com/macros/s/AKfycbycX2Kr8Hy21Ik0IFgRCQqMHrk9DpVSU52aOHEW0MamkTEMKqXa1N6ZWNIIr7PIWzG7WA/exec";
-    const data = fetchGoogleSheetJSON(url);
+    async function main(){
+        const url = "https://script.google.com/macros/s/AKfycbzHoRz9YJeE2dIq8UipPmy6st9aptSm2VrA-gDMTQMHQON75KwO-AF7oE5m4yJctN3GGQ/exec";
+        const data = await fetchGoogleSheetJSON(url);
 
-    createElement('text', 'text', `test`, 0, 900, data, 32);
+        data.forEach((value1, index) => {
+            createElement('text', 'text', `test`, 0, 900 + index * 100, data[index].name + " " + data[index].describe + " " + data[index].price, 32);
+        });
+    }
+
+    main();
 });
