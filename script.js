@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
         container.style.position = "absolute";
         container.style.transform = "translate(" + x + "px, " + y + "px)";
         container.style.fontSize = size + "px";
-        container.textContent = text;
+        container.innerHTML = text;
         document.body.appendChild(container);
     }
 
