@@ -1,89 +1,85 @@
 document.addEventListener("DOMContentLoaded", function() {
-    async function fetchGoogleSheetJSON(url) {
-        try {
-            const response = await fetch(url, {
-                redirect: "follow",
-                method: "GET",
-                headers: {
-                    "Content-Type": "text/plain;charset=utf-8",
-                },
-            });
-            if (!response.ok) throw new Error(`Ошибка: ${response.status}`);
-            const data = await response.json();
-            console.log("Данные из Google Sheets:", data);
-            return data;
-        } catch (error) {
-            console.error("Ошибка при загрузке данных:", error);
-            return null;
-        }
-    }
-    //https://script.google.com/macros/s/AKfycbzHoRz9YJeE2dIq8UipPmy6st9aptSm2VrA-gDMTQMHQON75KwO-AF7oE5m4yJctN3GGQ/exec
-    async function setUpProducts(url){
-        const data = await fetchGoogleSheetJSON(url);
+    const track = document.getElementById('carousel-track');
+    const images = track.children;
+    const total = images.length;
+    let currentIndex = 0;
 
-        data.forEach((value, index) => {
-            const name = data[index].name;
-            const describe = data[index].describe;
-            const price = data[index].price;
+    let startX = 0;
+    let currentTranslate = 0;
+    let prevTranslate = 0;
+    let isDragging = false;
+    let animationID = 0;
 
-            createProductCard(index, name, describe, price);
-        });
+    const carousel = document.getElementById('carousel');
+    let slideWidth = carousel.clientWidth;
+
+    window.addEventListener('resize', () => {
+        slideWidth = carousel.clientWidth;
+        setPositionByIndex();
+    });
+
+    function getPositionX(event) {
+        return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
     }
 
-    function createElement(className, objName, id, x, y, text, size){
-        const container = document.createElement(objName);
-        container.className = className;
-        container.id = id;
-        container.style.position = "absolute";
-        container.style.transform = "translate(" + x + "px, " + y + "px)";
-        container.style.fontSize = size + "px";
-        container.innerHTML = text;
-        document.body.appendChild(container);
+    function touchStart(event) {
+        isDragging = true;
+        startX = getPositionX(event);
+        animationID = requestAnimationFrame(animation);
+        track.style.transition = 'none';
+        event.preventDefault();
     }
 
-    function createRect(id, x, y, width, height, col){
-        const rectangle = document.createElement("button");
-        rectangle.className = "button";
-        rectangle.id = id;
-        rectangle.style.position = "absolute";
-        rectangle.style.width = width;
-        rectangle.style.height = height;
-        rectangle.style.backgroundColor = col;
-        rectangle.style.transform = "translate(" + x + ", " + y + ")";
-        rectangle.style.borderRadius = "8px";
-        rectangle.style.cursor = "default";
-        document.body.appendChild(rectangle);
+    function touchMove(event) {
+        if (!isDragging) return;
+        const currentPosition = getPositionX(event);
+        currentTranslate = prevTranslate + currentPosition - startX;
     }
 
-    function createProductCard(index, name, describe, price){
-        let x = -140;
-        let y = 200*index + 700;
-        createRect(name+index, x - 5 + "px", y + "px", "300px", "180px", 'lightgray')
-        createElement("text", "text", name+index, x, y + 5, name, 40);
-        createElement("text", "text", name+index, x, y + 60, describe, 15);
-        createElement("button", "button", name+index, x, y + 120, price, 24);
+    function touchEnd() {
+        cancelAnimationFrame(animationID);
+        isDragging = false;
+        const movedBy = currentTranslate - prevTranslate;
+
+        if (movedBy < -50 && currentIndex < total - 1) currentIndex++;
+        if (movedBy > 50 && currentIndex > 0) currentIndex--;
+
+        setPositionByIndex();
     }
 
-    createRect("background-rect", "-52%", "62%", "103.9%", "1080px", '#1b232a');
+    function animation() {
+        setSliderPosition();
+        if (isDragging) requestAnimationFrame(animation);
+    }
 
-    setUpProducts("https://script.google.com/macros/s/AKfycbzHoRz9YJeE2dIq8UipPmy6st9aptSm2VrA-gDMTQMHQON75KwO-AF7oE5m4yJctN3GGQ/exec");
+    function setSliderPosition() {
+        track.style.transform = `translateX(${currentTranslate}px)`;
+    }
 
-    //window.location.search
-    //products=VPN,Server,Test
-//    const params = new URLSearchParams(window.location.search);
-//
-//    const trueVars = ["products"];
-//
-//    params.forEach((value, key) => {
-//        if(trueVars.includes(key)){
-//            if(key=="products"){
-//                createProductCards(value);
-//            }else{
-//                const element = document.getElementById(key);
-//                if (element) {
-//                    element.textContent = value;
-//                }
-//            }
-//        }
-//    });
+    function setPositionByIndex() {
+        currentTranslate = -currentIndex * slideWidth;
+        prevTranslate = currentTranslate;
+        track.style.transition = 'transform 0.3s ease';
+        setSliderPosition();
+    }
+
+    // Слушатели на карусель целиком, чтобы работать и с мышью и с тачами
+    carousel.addEventListener('touchstart', touchStart);
+    carousel.addEventListener('touchmove', touchMove);
+    carousel.addEventListener('touchend', touchEnd);
+
+    carousel.addEventListener('mousedown', (event) => {
+        touchStart(event);
+        // Добавляем слушатели на window, чтобы ловить mousemove/mouseup за пределами карусели
+        window.addEventListener('mousemove', touchMove);
+        window.addEventListener('mouseup', onMouseUp);
+    });
+
+    function onMouseUp(event) {
+        touchEnd(event);
+        window.removeEventListener('mousemove', touchMove);
+        window.removeEventListener('mouseup', onMouseUp);
+    }
+
+    setPositionByIndex();
 });
